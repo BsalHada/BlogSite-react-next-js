@@ -1,16 +1,27 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Author from "@/app/ui/authors/Author";
+import { Swiper, SwiperSlide} from "swiper/react";
+import SwiperCore from "swiper";
+import {Autoplay} from "swiper";
+// Import Swiper styles
+import "swiper/css";
 
 const Section1 = () => {
+
+  //-----swiper autoplay-----
+SwiperCore.use([Autoplay])
+
 
   // backgroundimage
   // const bg={
   //   background:"url('/images/dotBg2.jpg')no-repeat",
   //   backgroundPosition:"left"
   // }
-  
+
   const Slide = () => {
     return (
       <div className="grid md:grid-cols-2">
@@ -38,9 +49,6 @@ const Section1 = () => {
               <span className="text-gray-600 hover:text-gray-900 text-sm">
                 -Nov10,2023
               </span>
-
-             
-            
             </Link>
           </div>
           <div className="text-container">
@@ -69,7 +77,7 @@ const Section1 = () => {
             </div>
           </div>
           <div className="author-container">
-<Author/>
+            <Author />
           </div>
         </div>
       </div>
@@ -77,7 +85,22 @@ const Section1 = () => {
   };
   return (
     <section className="py-16">
-      <div className="container mx-auto md:px-20">{Slide()}</div>
+      <div className="container mx-auto md:px-20">
+        {/* slider swiper */}
+        <Swiper
+          slidesPerView={1}
+          autoplay={{delay:1000}}
+          loop={true}
+         
+        >
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+      
+        </Swiper>
+      
+      </div>
     </section>
   );
 };
